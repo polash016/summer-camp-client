@@ -1,11 +1,14 @@
 import { Carousel, Typography, Button } from "@material-tailwind/react";
+import bannerImg1 from '../../../assets/images/banner1.jpg';
+import bannerImg2 from '../../../assets/images/banner2.jpg';
+import bannerImg3 from '../../../assets/images/banner3.jpg';
 
 const Banner = () => {
     return (
-        <Carousel className="rounded-xl">
+        <Carousel autoplay autoplayDelay={3000} className="rounded-xl w-[90%] mx-auto">
       <div className="relative h-full w-full">
         <img
-          src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+          src={bannerImg1}
           alt="image 1"
           className="h-full w-full object-cover"
         />
@@ -41,12 +44,12 @@ const Banner = () => {
       </div>
       <div className="relative h-full w-full">
         <img
-          src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+          src={bannerImg2}
           alt="image 2"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
-          <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+        <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
+          <div className="w-3/4 text-center md:w-2/4">
             <Typography
               variant="h1"
               color="white"
@@ -64,7 +67,7 @@ const Banner = () => {
               quality of air that emanation from old trees, that so
               wonderfully changes and renews a weary spirit.
             </Typography>
-            <div className="flex gap-2">
+            <div className="flex justify-center gap-2">
               <Button size="lg" color="white">
                 Explore
               </Button>
@@ -75,14 +78,14 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="relative h-full w-full">
+      <div className="relative  h-full w-full">
         <img
-          src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
+          src={bannerImg3}
           alt="image 3"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 grid h-full w-full items-end bg-black/75">
-          <div className="w-3/4 pl-12 pb-12 md:w-2/4 md:pl-20 md:pb-20 lg:pl-32 lg:pb-32">
+        <div className="absolute inset-0 grid h-full w-full text-center place-items-center bg-black/75">
+          <div className="w-3/4 text-center md:w-2/4">
             <Typography
               variant="h1"
               color="white"
@@ -100,7 +103,7 @@ const Banner = () => {
               quality of air that emanation from old trees, that so
               wonderfully changes and renews a weary spirit.
             </Typography>
-            <div className="flex gap-2">
+            <div className="flex gap-2 justify-center">
               <Button size="lg" color="white">
                 Explore
               </Button>

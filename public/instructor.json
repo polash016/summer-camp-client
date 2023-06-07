@@ -1,0 +1,79 @@
+[
+    {
+        "instructor_name": "Emily Anderson",
+        "instructor_image": "emily.jpg",
+        "instructor_email": "emily.anderson@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Piano Prodigies"
+      },
+      {
+        "instructor_name": "David Thompson",
+        "instructor_image": "david.jpg",
+        "instructor_email": "david.thompson@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Vibrant Violins"
+      },
+      {
+        "instructor_name": "Sarah Mitchell",
+        "instructor_image": "sarah.jpg",
+        "instructor_email": "sarah.mitchell@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Guitar Grooves"
+      },
+      {
+        "instructor_name": "Michael Davis",
+        "instructor_image": "michael.jpg",
+        "instructor_email": "michael.davis@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Cello Sensations"
+      },
+      {
+        "instructor_name": "Joshua Roberts",
+        "instructor_image": "joshua.jpg",
+        "instructor_email": "joshua.roberts@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Dynamic Drumming"
+      },
+      {
+        "instructor_name": "Olivia Wilson",
+        "instructor_image": "olivia.jpg",
+        "instructor_email": "olivia.wilson@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Saxophone Serenades"
+      },
+      {
+        "instructor_name": "Sophia Evans",
+        "instructor_image": "sophia.jpg",
+        "instructor_email": "sophia.evans@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Flute Finesse"
+      },
+      {
+        "instructor_name": "Daniel Adams",
+        "instructor_image": "daniel.jpg",
+        "instructor_email": "daniel.adams@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Trumpet Triumph"
+      },
+      {
+        "instructor_name": "Grace Thompson",
+        "instructor_image": "grace.jpg",
+        "instructor_email": "grace.thompson@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Harmony Harpists"
+      },
+      {
+        "instructor_name": "Benjamin Wright",
+        "instructor_image": "benjamin.jpg",
+        "instructor_email": "benjamin.wright@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Clarinet Concerto"
+      },
+      {
+        "instructor_name": "Jessica Nelson",
+        "instructor_image": "jessica.jpg",
+        "instructor_email": "jessica.nelson@example.com",
+        "instructor_classes": 1,
+        "classes_taken": "Trombone Tunes"
+      }
+]

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logo from "../../../assets/images/logo.png";
 import {
   Navbar,
   Typography,
@@ -6,7 +7,6 @@ import {
   IconButton,
   Collapse,
 } from "@material-tailwind/react";
- 
   
 
 const navList = (
@@ -15,7 +15,7 @@ const navList = (
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal text-white"
       >
         <a href="#" className="flex items-center">
           Pages
@@ -25,7 +25,7 @@ const navList = (
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal text-white"
       >
         <a href="#" className="flex items-center">
           Account
@@ -35,7 +35,7 @@ const navList = (
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal text-white"
       >
         <a href="#" className="flex items-center">
           Blocks
@@ -45,7 +45,7 @@ const navList = (
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal text-white"
       >
         <a href="#" className="flex items-center">
           Docs
@@ -61,15 +61,15 @@ const NavBar = () => {
     window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
   }, []);
     return (
-        <div>
-            <Navbar blurred className="mx-auto max-w-screen-xxl py-2 px-4 lg:px-8 lg:py-4 ">
-      <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
+        <div className="max-w-[90%] mx-auto">
+            <Navbar blurred className="max-w-[90%] mx-auto absolute z-10 top-0 bg-opacity-0 border-none py-2 px-4 lg:px-8 lg:py-4 ">
+      <div className="mx-auto flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="#"
-          className="mr-4 cursor-pointer py-1.5 font-medium"
+          className="mr-4 cursor-pointer py-1.5 font-medium text-white"
         >
-          Material Tailwind
+          <img className="w-40 h-10"  src={logo} alt="" />
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <Button variant="gradient" size="sm" className="hidden lg:inline-block">
