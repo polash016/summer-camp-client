@@ -5,7 +5,7 @@ import bannerImg3 from '../../../assets/images/banner3.jpg';
 
 const Banner = () => {
     return (
-        <Carousel autoplay autoplayDelay={3000} className="rounded-xl w-[90%] mx-auto">
+        <Carousel autoplay autoplayDelay={3000} loop className="rounded-xl w-[90%] mx-auto">
       <div className="relative h-full w-full">
         <img
           src={bannerImg1}
