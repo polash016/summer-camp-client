@@ -9,16 +9,20 @@ import {
     Typography,
     Button,
   } from "@material-tailwind/react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const AllClasses = () => {
-    const [classes] = useClasses()
-    const {user} = useAuth()
+    const [classes] = useClasses();
+    const {user} = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
 
 
     const handleSelect = (course) => {
-        const selectedClass = {CourseId: _id, name: course.class_name, image: course.class_image, price:course.price,email: user.email }
+        
         if(user){
+            const selectedClass = {CourseId: course._id, name: course.class_name, image: course.class_image, price:course.price,email: user.email }
             fetch('http://localhost:5000/selectedClass',{
                 method: 'POST',
                 headers: {
@@ -39,6 +43,20 @@ const AllClasses = () => {
                       })
                 }
             })
+        }
+        else{
+            Swal.fire({
+                title: 'Please Login to Book the Course',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login Now !'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  navigate('/login') //TODO ,{state: {from: location}}
+                }
+              })
         }
     }
     return (

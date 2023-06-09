@@ -58,7 +58,7 @@ const navList = (
 
 const NavBar = () => {
   const [openNav, setOpenNav] = useState(false);
-  const {user} = useAuth()
+  const {user,logOut} = useAuth()
 
   useEffect(() => {
     window.addEventListener(
@@ -66,6 +66,12 @@ const NavBar = () => {
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+
+  const handleLogout = () => {
+    logOut()
+    .then()
+    .catch(err => console.log(err))
+  }
   return (
     <div className="max-w-[90%] mx-auto">
       <Navbar
@@ -75,14 +81,14 @@ const NavBar = () => {
         <div className="mx-auto flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
-            href="#"
+            href="/"
             className="mr-4 cursor-pointer py-1.5 font-medium"
           >
             <img className="w-40 h-10" src={logo} alt="" />
           </Typography>
           <div className="hidden lg:block">{navList}</div>
             <div>
-            {user ? <><Avatar src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5 mr-3" /><Button variant="gradient" size="sm"  className="mb-2">
+            {user ? <><Avatar src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5 mr-3" /><Button onClick={handleLogout} variant="gradient" size="sm"  className="mb-2">
                 <span>Logout</span>
               </Button></> : <Link to='/login'>
               <Button variant="gradient" size="sm" fullWidth className="mb-2">

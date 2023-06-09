@@ -18,18 +18,22 @@ const AuthProvider = ({children}) => {
     }
     const googleLogin = () => {
         const provider = new GoogleAuthProvider();
+        setLoading(true)
         return signInWithPopup(auth, provider)
     }
 
     const signIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const logOut = () => {
+        setLoading(true)
         return signOut(auth)
     }
 
     const updateUserProfile = (name, photo) => {
+        setLoading(true)
         return updateUserProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })

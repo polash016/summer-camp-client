@@ -11,11 +11,42 @@ import {
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import SocialLogin from "../../pages/Shared/SocialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const [display, setDisplay] = useState(true)
+    const [display, setDisplay] = useState(true);
+    const {signIn} = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value; 
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+            Swal.fire({
+                title: 'Logged In Succesfully',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+              navigate(from, {replace: true})
+        })
+        .catch(err => console.log(err))
+    }
     return (
-        <Card className="w-96 mx-auto mt-48">
+        <form onSubmit={handleLogin}>
+            <Card className="w-96 mx-auto mt-48">
       <CardHeader
         variant="gradient"
         color="blue"
@@ -26,14 +57,14 @@ const Login = () => {
         </Typography>
       </CardHeader>
       <CardBody className="flex flex-col gap-4">
-        <Input label="Email" size="lg" />
-        <Input type={display ? 'password': 'text'} label="Password" size="lg" icon={<button className="text-xl" onClick={() => setDisplay(false)}><FaEye /></button> } />
+        <Input name="email" label="Email" size="lg" />
+        <Input name="password" type={display ? 'password': 'text'} label="Password" size="lg" icon={<button className="text-xl" onClick={() => setDisplay(false)}><FaEye /></button> } />
         <div className="-ml-2.5">
           <Checkbox label="Remember Me" />
         </div>
       </CardBody>
       <CardFooter className="pt-0">
-        <Button variant="gradient" fullWidth>
+        <Button type="submit" variant="gradient" fullWidth>
           Sign In
         </Button>
         <Typography variant="small" className="mt-6 flex justify-center">
@@ -51,6 +82,7 @@ const Login = () => {
       </CardFooter>
       <SocialLogin></SocialLogin>
     </Card>
+        </form>
     );
 };
 
