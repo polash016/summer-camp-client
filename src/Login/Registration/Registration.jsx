@@ -8,7 +8,7 @@ import {
   Checkbox,
   Button,
 } from "@material-tailwind/react";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 

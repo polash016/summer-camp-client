@@ -9,8 +9,8 @@ import {
     Button,
   } from "@material-tailwind/react";
 import { useState } from "react";
-import { FaBeer, FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
+import SocialLogin from "../../pages/Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
     const [display, setDisplay] = useState(true)
@@ -27,7 +27,7 @@ const Login = () => {
       </CardHeader>
       <CardBody className="flex flex-col gap-4">
         <Input label="Email" size="lg" />
-        <Input type={display ? 'password': 'text'} label="Password" size="lg" icon={<button onClick={() => setDisplay(false)}><FaEye /></button> } />
+        <Input type={display ? 'password': 'text'} label="Password" size="lg" icon={<button className="text-xl" onClick={() => setDisplay(false)}><FaEye /></button> } />
         <div className="-ml-2.5">
           <Checkbox label="Remember Me" />
         </div>
@@ -37,7 +37,7 @@ const Login = () => {
           Sign In
         </Button>
         <Typography variant="small" className="mt-6 flex justify-center">
-          Don't have an account?
+          Don&apos;t have an account?
           <Typography
             as="a"
             href='/register'
@@ -49,6 +49,7 @@ const Login = () => {
           </Typography>
         </Typography>
       </CardFooter>
+      <SocialLogin></SocialLogin>
     </Card>
     );
 };
