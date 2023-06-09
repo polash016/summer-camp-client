@@ -1,74 +1,61 @@
-import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Tooltip,
-  } from "@material-tailwind/react";
-import { useQuery } from "@tanstack/react-query";
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-cube";
+import "swiper/css/pagination";
+
+import { Autoplay, EffectCube, Pagination } from "swiper";
+import useInstuctors from "../../hooks/useInstuctors";
 
 const Instructors = () => {
-    const { data: instructors = [] } = useQuery({
-        queryKey: ["instructors"],
-        queryFn: async () => {
-          const res = await fetch("http://localhost:5000/instructors");
-          return res.json();
-        },
-      });
+    const [instructors] = useInstuctors()
     return (
         <div className="w-[90%] mx-auto">
             <div className="grid lg:grid-cols-3">
+            <Swiper
+        effect={"cube"}
+        grabCursor={true}
+        autoplay={{
+          delay: 500,
+          disableOnInteraction: false,
+        }}
+        cubeEffect={{
+          shadow: true,
+          slideShadows: true,
+          shadowOffset: 20,
+          shadowScale: 0.94,
+        }}
+        pagination={true}
+        modules={[Autoplay,EffectCube, Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+        </SwiperSlide>
+        
+      
+            
+        
+                {/* {
+                    instructors.slice(0,6).map(instructor => <SwiperSlide style={{backgroundImage: `url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')`, backgroundRepeat: 'none', height: '500px'}} key={instructor._id} className=" h-full w-full rounded-none bg-[url()] bg-cover bg-center">
+                        <p>instructor card</p>
+                      </SwiperSlide>)
+                } */}
                 {
-                    instructors.slice(0,6).map(instructor => <Card key={instructor._id} className="w-96">
-                    <CardHeader floated={false} className="h-80">
-                      <img src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="profile-picture" />
-                    </CardHeader>
-                    <CardBody className="text-center">
-                      <Typography variant="h4" color="blue-gray" className="mb-2">
-                        {instructor.instructor_name}
-                      </Typography>
-                      <Typography color="blue" className="font-medium" textGradient>
-                        CEO / Co-Founder
-                      </Typography>
-                    </CardBody>
-                    <CardFooter className="flex justify-center gap-7 pt-2">
-                      <Tooltip content="Like">
-                        <Typography
-                          as="a"
-                          href="#facebook"
-                          variant="lead"
-                          color="blue"
-                          textGradient
-                        >
-                          <i className="fab fa-facebook" />
-                        </Typography>
-                      </Tooltip>
-                      <Tooltip content="Follow">
-                        <Typography
-                          as="a"
-                          href="#twitter"
-                          variant="lead"
-                          color="light-blue"
-                          textGradient
-                        >
-                          <i className="fab fa-twitter" />
-                        </Typography>
-                      </Tooltip>
-                      <Tooltip content="Follow">
-                        <Typography
-                          as="a"
-                          href="#instagram"
-                          variant="lead"
-                          color="purple"
-                          textGradient
-                        >
-                          <i className="fab fa-instagram" />
-                        </Typography>
-                      </Tooltip>
-                    </CardFooter>
-                  </Card>)
+                    instructors.slice(0,6).map(instructor => <SwiperSlide style={{backgroundImage: `url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')`, backgroundRepeat: 'none', height: '500px'}} key={instructor._id} className=" h-full w-full rounded-none bg-[url()] bg-cover bg-center">
+                        <p>instructor card</p>
+                      </SwiperSlide>)
                 }
+                </Swiper>
             </div>
             
         </div>

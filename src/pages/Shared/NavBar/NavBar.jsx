@@ -19,9 +19,9 @@ const navList = (
       color="blue-gray"
       className="p-1 font-normal text-white"
     >
-      <a href="#" className="flex items-center">
-        Pages
-      </a>
+      <Link to='/allClasses' className="flex items-center">
+        All Calsses
+      </Link>
     </Typography>
     <Typography
       as="li"
@@ -131,13 +131,13 @@ const NavBar = () => {
         <Collapse open={openNav}>
           <div className="container mx-auto">
             {navList}
-            {user ? <><Avatar src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5" /><Button variant="gradient" size="sm" fullWidth className="mb-2">
+            {/* {user ? <><Avatar src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5" /><Button variant="gradient" size="sm" fullWidth className="mb-2">
                 <span>Logout</span>
               </Button></> : <Link to='/login'>
               <Button variant="gradient" size="sm" fullWidth className="mb-2">
                 <span>Login</span>
               </Button>
-            </Link> }
+            </Link> } */}
           </div>
         </Collapse>
       </Navbar>

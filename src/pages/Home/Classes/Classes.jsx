@@ -4,16 +4,10 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import { useQuery } from "@tanstack/react-query";
+import useClasses from "../../../hooks/useClasses";
 
 const Classes = () => {
-  const { data: classes = [] } = useQuery({
-    queryKey: ["classes"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5000/classes");
-      return res.json();
-    },
-  });
+  const [classes] = useClasses()
   return (
     <div className="w-[90%] mx-auto">
       <h2>Top Classes</h2>
