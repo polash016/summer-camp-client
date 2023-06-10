@@ -36,26 +36,27 @@ const Registration = () => {
             fetch('http://localhost:5000/users', {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type' : 'application/json'
                 },
                 body: JSON.stringify(savedUser)
             })
-            .then(res=>res.json())
+            .then(res => res.json())
             .then(data => {
-               if(data.insertedId){
-                reset();
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "User Updated Succesfully",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                navigate('/')
-               }
+                console.log(data)
+                if(data.insertedId){
+                    reset()
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "User Updated Succesfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                      });
+                      navigate('/')
+                }
             })
         })
-        .catch(err => console.log(err))
+        // .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
   };
