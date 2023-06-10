@@ -46,7 +46,7 @@ const Login = () => {
     }
     return (
         <form onSubmit={handleLogin}>
-            <Card className="w-96 mx-auto mt-48">
+            <Card className="w-96 mx-auto mt-40">
       <CardHeader
         variant="gradient"
         color="blue"

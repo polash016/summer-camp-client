@@ -13,10 +13,11 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import SocialLogin from "../../pages/Shared/SocialLogin/SocialLogin";
 
 const Registration = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -27,54 +28,54 @@ const Registration = () => {
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password)
-    .then(result => {
+      .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser)
-        updateUserProfile(data.name, data.photoURL)
-        .then(() => {
-            const savedUser = {name: data.name, email: data.email}
-            fetch('http://localhost:5000/users', {
-                method: 'POST',
-                headers: {
-                    'content-type' : 'application/json'
-                },
-                body: JSON.stringify(savedUser)
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if(data.insertedId){
-                    reset()
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "User Updated Succesfully",
-                        showConfirmButton: false,
-                        timer: 1500,
-                      });
-                      navigate('/')
-                }
-            })
-        })
+        console.log(loggedUser);
+        updateUserProfile(data.name, data.photoURL).then(() => {
+          const savedUser = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "User Updated Succesfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
+        });
         // .catch(err => console.log(err))
-    })
-    .catch(err => console.log(err))
+      })
+      .catch((err) => console.log(err));
   };
 
   const password = watch("password");
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Card className="w-96 mx-auto mt-48">
-        <CardHeader
-          variant="gradient"
-          color="blue"
-          className="mb-4 grid h-28 place-items-center"
-        >
-          <Typography variant="h3" color="white">
-            Sign Up
-          </Typography>
-        </CardHeader>
+    // < onSubmit={handleSubmit(onSubmit)}>
+    <Card className="w-96 mx-auto mt-40">
+      <CardHeader
+        variant="gradient"
+        color="blue"
+        className="mb-4 grid h-28 place-items-center"
+      >
+        <Typography variant="h3" color="white">
+          Sign Up
+        </Typography>
+      </CardHeader>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <CardBody className="flex flex-col gap-4">
           <Input
             {...register("name", { required: true })}
@@ -160,8 +161,10 @@ const Registration = () => {
             </Typography>
           </Typography>
         </CardFooter>
-      </Card>
-    </form>
+      </form>
+
+      <SocialLogin></SocialLogin>
+    </Card>
   );
 };
 
