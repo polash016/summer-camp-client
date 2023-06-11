@@ -9,9 +9,11 @@ import {
   PresentationChartBarIcon,
 } from "@heroicons/react/24/solid";
 import { Link, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 const DashBoard = () => {
-    const isAdmin = true;
+    const [isAdmin] = useAdmin()
+    const isInstructor = true;
   return (
     <div className="flex justify-around">
       <Card className="flex-none fixed top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
@@ -38,31 +40,48 @@ const DashBoard = () => {
               Manage Users
             </ListItem>
           </Link></>
-           : 
-           <><Link  to="/dashboard/bookedClasses">
+           : isInstructor ?
+           <><Link  to="/dashboard/addClass">
             <ListItem>
               <ListItemPrefix>
                 <PresentationChartBarIcon className="h-5 w-5" />
               </ListItemPrefix>
-              My Selected Classes
+              Add A Class
             </ListItem>
           </Link>
-          <Link  to="/dashboard/bookedClasses">
+          <Link  to="/dashboard/myClasses">
             <ListItem>
               <ListItemPrefix>
                 <PresentationChartBarIcon className="h-5 w-5" />
               </ListItemPrefix>
-              My Enrolled Classes
+              My Classes
             </ListItem>
           </Link>
-          <Link  to="/dashboard/bookedClasses">
-            <ListItem>
-              <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Payment History
-            </ListItem>
-          </Link></>
+          </> :
+          <><Link  to="/dashboard/bookedClasses">
+          <ListItem>
+            <ListItemPrefix>
+              <PresentationChartBarIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            My Selected Classes
+          </ListItem>
+        </Link>
+        <Link  to="/dashboard/bookedClasses">
+          <ListItem>
+            <ListItemPrefix>
+              <PresentationChartBarIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            My Enrolled Classes
+          </ListItem>
+        </Link>
+        <Link  to="/dashboard/bookedClasses">
+          <ListItem>
+            <ListItemPrefix>
+              <PresentationChartBarIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Payment History
+          </ListItem>
+        </Link></>
           }
           
           <Link  to="/">

@@ -1,5 +1,4 @@
 import useSelectedClasses from '../../../hooks/useSelectedClasses';
-import { PencilIcon} from "@heroicons/react/24/solid";
 import {
   Card,
   Typography,
@@ -15,7 +14,7 @@ import Swal from 'sweetalert2';
 const TABLE_HEAD = ["#", "Image", "Name","Price", "Delete", "Pay"];
 
 const MySelectedClasses = () => {
-    const [bookedClasses, ,refetch] = useSelectedClasses();
+    const [classes,refetch] = useSelectedClasses();
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -67,8 +66,8 @@ const MySelectedClasses = () => {
             </tr>
           </thead>
           <tbody>
-            {bookedClasses.map(({_id, image, name, price }, index) => {
-              const isLast = index === bookedClasses.length - 1;
+            {classes.map(({_id, image, name, price }, index) => {
+              const isLast = index === classes.length - 1;
               const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
  
               return (

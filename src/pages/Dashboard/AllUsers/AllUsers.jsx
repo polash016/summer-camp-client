@@ -1,22 +1,59 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Card,
-  Typography,
-  CardBody,
-  IconButton,
-  Tooltip,
-  Button,
-} from "@material-tailwind/react";
+import { Card, Typography, CardBody, Button } from "@material-tailwind/react";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const TABLE_HEAD = ["#", "Name", "Email", "Instructor", "Admin"];
 
 const AllUsers = () => {
   const { user } = useAuth();
+  const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
-    return res.json();
+    const res = await axiosSecure.get("/users");
+    return res.data;
   });
+
+  const handleMakeAdmin = (user) => {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${user.name} is an Admin Now`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+  };
+
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        method: "PATCH",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: `${user.name} is an Instructor Now`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+  }
+
   return (
     <div className="w-[90%] ml-8">
       <Card className="h-full w-full">
@@ -41,12 +78,12 @@ const AllUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map(({ _id, name, email }, index) => {
+              {users.map((user, index) => {
                 const isLast = index === users.length - 1;
                 const classes = isLast
                   ? "p-4"
                   : "p-4 border-b border-blue-gray-50";
-
+                const { _id, name, email } = user;
                 return (
                   <tr key={_id}>
                     <td className={classes}>{index + 1}</td>
@@ -72,11 +109,16 @@ const AllUsers = () => {
                       </Typography>
                     </td>
                     <td className={classes}>
-                    <Typography>
+                      <Typography>
                         {user.role === "instructor" ? (
                           "Instructor"
                         ) : (
-                          <Button size="sm">Make Instructor</Button>
+                          <Button
+                            onClick={() => handleMakeInstructor(user)}
+                            size="sm"
+                          >
+                            Make Instructor
+                          </Button>
                         )}
                       </Typography>
                     </td>
@@ -85,7 +127,12 @@ const AllUsers = () => {
                         {user.role === "admin" ? (
                           "Admin"
                         ) : (
-                          <Button size="sm">Make Admin</Button>
+                          <Button
+                            onClick={() => handleMakeAdmin(user)}
+                            size="sm"
+                          >
+                            Make Admin
+                          </Button>
                         )}
                       </Typography>
                     </td>

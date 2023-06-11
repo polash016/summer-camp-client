@@ -10,7 +10,6 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-import useSelectedClasses from "../../../hooks/useSelectedClasses";
 
 
 
@@ -18,7 +17,6 @@ import useSelectedClasses from "../../../hooks/useSelectedClasses";
 const NavBar = () => {
   const [openNav, setOpenNav] = useState(false);
   const {user,logOut} = useAuth()
-  const bookedClasses = useSelectedClasses();
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -93,7 +91,7 @@ const NavBar = () => {
           </Typography>
           <div className="hidden lg:block">{navList}</div>
             <div>
-            {user ? <><Avatar src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5 mr-3" /><Button onClick={handleLogout} variant="gradient" size="sm"  className="mb-2">
+            {user ? <><Avatar title={user.email} src={user.photoURL} alt="avatar" withBorder={true} className="p-0.5 mr-3" /><Button onClick={handleLogout} variant="gradient" size="sm"  className="mb-2">
                 <span>Logout</span>
               </Button></> : <Link to='/login'>
               <Button variant="gradient" size="sm" fullWidth className="mb-2">

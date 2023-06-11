@@ -8,6 +8,7 @@ import useClasses from "../../../hooks/useClasses";
 
 const Classes = () => {
   const [classes] = useClasses()
+  console.log(classes)
   return (
     <div className="w-[90%] mx-auto">
       <h2>Top Classes</h2>
