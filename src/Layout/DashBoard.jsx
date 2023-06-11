@@ -10,10 +10,12 @@ import {
 } from "@heroicons/react/24/solid";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
+import useInstructorRole from "../hooks/useInstructorRole";
 
 const DashBoard = () => {
     const [isAdmin] = useAdmin()
-    const isInstructor = true;
+    const [isInstructor] = useInstructorRole()
+    // const isInstructor = true;
   return (
     <div className="flex justify-around">
       <Card className="flex-none fixed top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
