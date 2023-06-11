@@ -38,8 +38,8 @@ const AddClass = () => {
         if(response.success){
             const imgUrl = response.data.display_url;
             const {class_name, instructor_name, instructor_email, available_seats, price, enrolled_students} = data;
-            const newClass = {class_name, class_image: imgUrl, instructor_name, instructor_email, available_seats: parseFloat(available_seats), price: parseFloat(price), enrolled_students: parseFloat(enrolled_students)};
-            axiosSecure.post('/classes', newClass)
+            const newClass = {class_name, class_image: imgUrl, instructor_name, instructor_email, available_seats: parseFloat(available_seats), price: parseFloat(price), enrolled_students: parseFloat(enrolled_students), status: 'Pending'};
+            axiosSecure.post('/classes/instructor', newClass)
             .then(data => {
                 reset()
                 if(data.data.insertedId){
