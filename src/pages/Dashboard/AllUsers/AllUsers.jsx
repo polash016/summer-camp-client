@@ -58,7 +58,7 @@ const AllUsers = () => {
     <div className="w-[90%] ml-8">
       <Card className="h-full w-full">
         <CardBody className=" px-0">
-          <table className="mt-4 w-full min-w-max table-auto text-left">
+          <table className="mt-4 w-full min-w-max table-auto text-center">
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
@@ -114,6 +114,7 @@ const AllUsers = () => {
                           "Instructor"
                         ) : (
                           <Button
+                          disabled={user.role === 'admin' ? true : false}
                             onClick={() => handleMakeInstructor(user)}
                             size="sm"
                           >
