@@ -67,7 +67,7 @@ const ManageClasses = () => {
   }
 
   const handleDeny = (id) => {
-    axiosSecure.patch(`/classes/instructor/${id}`)
+    axiosSecure.put(`/classes/instructor/${id}`)
     .then(data => {
       console.log(data.data)
       if(data.data.modifiedCount){
@@ -88,14 +88,14 @@ const ManageClasses = () => {
     e.preventDefault();
     const feedback = e.target.elements.feedback.value
     console.log(feedback)
-    axiosSecure.put(`/classes/instructor/${selectedId}`,{feedback})
+    axiosSecure.put(`/feedback/${selectedId}`,{feedback})
     .then(data => {
       console.log(data.data)
       if(data.data.modifiedCount){
           Swal.fire({
               position: "center",
               icon: "success",
-              title: 'Status Updated',
+              title: 'Feedback Updated',
               showConfirmButton: false,
               timer: 1500,
             });

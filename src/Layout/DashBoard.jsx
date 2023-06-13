@@ -5,12 +5,14 @@ import {
   ListItem,
   ListItemPrefix,
 } from "@material-tailwind/react";
+import { BsBuildingAdd } from "react-icons/bs";
 import {
   PresentationChartBarIcon,
 } from "@heroicons/react/24/solid";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructorRole from "../hooks/useInstructorRole";
+import { FaHome } from "react-icons/fa";
 
 const DashBoard = () => {
     const [isAdmin] = useAdmin()
@@ -46,7 +48,7 @@ const DashBoard = () => {
            <><Link  to="/dashboard/addClass">
             <ListItem>
               <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
+              <BsBuildingAdd></BsBuildingAdd>
               </ListItemPrefix>
               Add A Class
             </ListItem>
@@ -89,7 +91,7 @@ const DashBoard = () => {
           <Link  to="/">
             <ListItem>
               <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
+                <FaHome></FaHome>
               </ListItemPrefix>
               Home
             </ListItem>
