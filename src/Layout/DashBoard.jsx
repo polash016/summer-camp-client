@@ -76,7 +76,7 @@ const DashBoard = () => {
             My Enrolled Classes
           </ListItem>
         </Link>
-        <Link  to="/dashboard/bookedClasses">
+        <Link  to="/dashboard/paymentHistory">
           <ListItem>
             <ListItemPrefix>
               <PresentationChartBarIcon className="h-5 w-5" />
