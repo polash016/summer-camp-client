@@ -9,12 +9,14 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { FaTrashAlt } from 'react-icons/fa';
+import { Link, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
  
 const TABLE_HEAD = ["#", "Image", "Name","Price", "Delete", "Pay"];
 
 const MySelectedClasses = () => {
-    const [classes,refetch] = useSelectedClasses();
+    const [courses,refetch] = useSelectedClasses();
+    console.log(courses)
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -66,8 +68,8 @@ const MySelectedClasses = () => {
             </tr>
           </thead>
           <tbody>
-            {classes.map(({_id, image, name, price }, index) => {
-              const isLast = index === classes.length - 1;
+            {courses.map(({_id, image, name, price }, index) => {
+              const isLast = index === courses.length - 1;
               const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
  
               return (
@@ -92,16 +94,16 @@ const MySelectedClasses = () => {
                     </Typography>
                   </td>
                   <td className={classes}>
-                    <Tooltip content="Edit User">
+                    <Tooltip content="Delete Class">
                       <IconButton onClick={() => handleDelete(_id)} variant="text" color="blue-gray">
                         <FaTrashAlt className='h-4 w-4 text-blue-600'></FaTrashAlt>
                       </IconButton>
                     </Tooltip>
                   </td>
                   <td className={classes}>
-                    <Tooltip>
-                      <Button size="sm">Pay</Button>
-                    </Tooltip>
+                    <Typography>
+                      <Link to={`/dashboard/payment/${_id}`}><Button size="sm">Pay</Button></Link>
+                    </Typography>
                   </td>
                 </tr>
               );

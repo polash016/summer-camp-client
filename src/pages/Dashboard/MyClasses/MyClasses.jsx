@@ -27,9 +27,9 @@ const MyClasses = () => {
       //    const res = await fetch(`http://localhost:5000/classes/instructor?email=${user?.email}`)
       const res = await axiosSecure.get(
         `/classes/instructor?email=${user?.email}`
-      );
+      ) 
 
-      return res.data;
+      return res.data
     },
   });
   console.log(courses);

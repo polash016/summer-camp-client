@@ -8,6 +8,8 @@ import {
   Button,
   Avatar,
 } from "@material-tailwind/react";
+import { data } from "autoprefixer";
+import Swal from "sweetalert2";
 
 const TABLE_HEAD = [
   "#",
@@ -26,7 +28,7 @@ const ManageClasses = () => {
   //     const res = await axiosSecure.get('/classes/instructorClass');
   //     return res.data
   // }])
-  const { data: courses = [] } = useQuery({
+  const { data: courses = [], refetch } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
       //    const res = await fetch(`http://localhost:5000/classes/instructor?email=${user?.email}`)
@@ -35,6 +37,48 @@ const ManageClasses = () => {
       return res.data;
     },
   });
+  
+  const handleApprove = (id) => {
+    
+    axiosSecure.patch(`/classes/instructor/${id}`)
+          .then(data => {
+            console.log(data.data)
+            if(data.data.modifiedCount){
+                refetch()
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: 'Status Updated',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+            }
+          })
+    
+    
+  }
+
+  const handleDeny = (id) => {
+    axiosSecure.put(`/classes/instructor/${id}`)
+    .then(data => {
+      console.log(data.data)
+      if(data.data.modifiedCount){
+          refetch()
+          Swal.fire({
+              position: "center",
+              icon: "success",
+              title: 'Status Updated',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+      }
+    })
+  };
+
+  const handleFeedback = (id) => {
+    
+  }
+
   console.log(courses);
   return (
     <div className="w-[90%] ml-8">
@@ -143,9 +187,9 @@ const ManageClasses = () => {
 
                     <td className={classes}>
                       <Typography>
-                        <Button size="sm">Approve</Button> <br />
-                        <Button className="mt-2 mb-2" size="sm">Deny</Button> <br />
-                        <Button size="sm">Feedback</Button>
+                        <Button disabled={status === 'Approved' || status === 'Denied'} onClick={() => handleApprove(_id)} size="sm">Approve</Button> <br />
+                        <Button disabled={status === 'Approved' || status === 'Denied'} onClick={() => handleDeny(_id)} className="mt-2 mb-2" size="sm">Deny</Button> <br />
+                        <Button onClick={()=> handleFeedback(id)} size="sm">Feedback</Button>
                       </Typography>
                     </td>
                   </tr>
