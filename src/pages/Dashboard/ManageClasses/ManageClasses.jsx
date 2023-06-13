@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -7,8 +7,13 @@ import {
   CardBody,
   Button,
   Avatar,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  Textarea,
+  DialogFooter,
 } from "@material-tailwind/react";
-import { data } from "autoprefixer";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import Swal from "sweetalert2";
 
 const TABLE_HEAD = [
@@ -24,10 +29,13 @@ const TABLE_HEAD = [
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  // const {data} = useQuery(['classes', async() => {
-  //     const res = await axiosSecure.get('/classes/instructorClass');
-  //     return res.data
-  // }])
+  const [open, setOpen] = React.useState(false);
+  const [selectedId, setSelectedId] = useState(null)
+ 
+  const handleOpen = (id) => {
+    setOpen(!open);
+    setSelectedId(id)
+  };
   const { data: courses = [], refetch } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
@@ -59,7 +67,7 @@ const ManageClasses = () => {
   }
 
   const handleDeny = (id) => {
-    axiosSecure.put(`/classes/instructor/${id}`)
+    axiosSecure.patch(`/classes/instructor/${id}`)
     .then(data => {
       console.log(data.data)
       if(data.data.modifiedCount){
@@ -75,11 +83,29 @@ const ManageClasses = () => {
     })
   };
 
-  const handleFeedback = (id) => {
-    
+  const handleFeedback = (e) => {
+    console.log(selectedId)
+    e.preventDefault();
+    const feedback = e.target.elements.feedback.value
+    console.log(feedback)
+    axiosSecure.put(`/classes/instructor/${selectedId}`,{feedback})
+    .then(data => {
+      console.log(data.data)
+      if(data.data.modifiedCount){
+          Swal.fire({
+              position: "center",
+              icon: "success",
+              title: 'Status Updated',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+      }
+    })
+    setOpen(false)
   }
 
-  console.log(courses);
+ 
+  // console.log(courses);
   return (
     <div className="w-[90%] ml-8">
       <Card className="h-full w-full">
@@ -189,9 +215,38 @@ const ManageClasses = () => {
                       <Typography>
                         <Button disabled={status === 'Approved' || status === 'Denied'} onClick={() => handleApprove(_id)} size="sm">Approve</Button> <br />
                         <Button disabled={status === 'Approved' || status === 'Denied'} onClick={() => handleDeny(_id)} className="mt-2 mb-2" size="sm">Deny</Button> <br />
-                        <Button onClick={()=> handleFeedback(id)} size="sm">Feedback</Button>
+                        {/* <Button onClick={()=> handleFeedback(_id)} size="sm">Feedback</Button> */}
+                        <>
+                    <React.Fragment>
+      <Button onClick={()=>handleOpen(_id)} size="sm">
+        Feedback 
+      </Button>
+      <Dialog open={open}>
+        <span className="flex items-center justify-between">
+          <DialogHeader>New message to @</DialogHeader>
+          <XMarkIcon className="mr-3 h-5 w-5" onClick={handleOpen} />
+        </span>
+        <form onSubmit={(e) => handleFeedback(e, _id)}>
+        <DialogBody divider>
+          <span className="grid gap-6">
+            <Textarea name="feedback" label="Message" />
+          </span>
+        </DialogBody>
+        <DialogFooter className="space-x-2">
+          <Button variant="outlined" color="red" onClick={handleOpen}>
+            close
+          </Button>
+          <Button type="submit" variant="gradient" color="green">
+            Send Feedback
+          </Button>
+        </DialogFooter>
+        </form>
+      </Dialog>
+    </React.Fragment>
+                    </>
                       </Typography>
                     </td>
+                    
                   </tr>
                 );
               })}

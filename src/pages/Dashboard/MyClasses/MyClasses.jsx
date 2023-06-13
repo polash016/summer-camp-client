@@ -119,8 +119,17 @@ const MyClasses = () => {
                       </Typography>
                     </td>
                     <td className={classes}>
-                      <Typography>{feedback ? feedback : ""}</Typography>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {status === 'Denied'&& feedback}
+                      </Typography>
                     </td>
+                    {/* <td className={classes}>
+                      <Typography>{feedback ? feedback : ""}</Typography>
+                    </td> */}
                     <td className={classes}>
                       <Typography>
                         <Button size="sm">Update</Button>
