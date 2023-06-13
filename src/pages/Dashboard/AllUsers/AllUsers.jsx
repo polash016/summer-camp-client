@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, Typography, CardBody, Button } from "@material-tailwind/react";
-import useAuth from "../../../hooks/useAuth";
+// import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const TABLE_HEAD = ["#", "Name", "Email", "Instructor", "Admin"];
 
 const AllUsers = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");

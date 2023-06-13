@@ -9,7 +9,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { FaTrashAlt } from 'react-icons/fa';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
  
 const TABLE_HEAD = ["#", "Image", "Name","Price", "Delete", "Pay"];

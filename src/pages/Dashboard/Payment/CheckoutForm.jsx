@@ -1,6 +1,6 @@
 import { Button } from "@material-tailwind/react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./CheckoutForm.css";
 import useSelectedClasses from "../../../hooks/useSelectedClasses";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
