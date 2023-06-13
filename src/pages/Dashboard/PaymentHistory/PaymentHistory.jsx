@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-const TABLE_HEAD = ["#", "Course Name", "Email", "Price", "TransactionId"];
+const TABLE_HEAD = ["#","Image", "Course Name", "Email", "Price", "TransactionId"];
 
 const PaymentHistory = () => {
   const [axiosSecure] = useAxiosSecure();

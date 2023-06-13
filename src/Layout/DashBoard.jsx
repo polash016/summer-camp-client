@@ -68,7 +68,7 @@ const DashBoard = () => {
             My Selected Classes
           </ListItem>
         </Link>
-        <Link  to="/dashboard/bookedClasses">
+        <Link  to="/dashboard/enrolledClass">
           <ListItem>
             <ListItemPrefix>
               <PresentationChartBarIcon className="h-5 w-5" />
