@@ -10,6 +10,10 @@ import {
     Button,
   } from "@material-tailwind/react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import SectionTitle from "../../SectionTitle/SectionTitle";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructorRole from "../../hooks/useInstructorRole";
 
 
 const AllClasses = () => {
@@ -17,7 +21,8 @@ const AllClasses = () => {
     const {user} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructorRole()
 
     const handleSelect = (course) => {
         
@@ -60,25 +65,29 @@ const AllClasses = () => {
         }
     }
     return (
-        <div className="w-[90%] mx-auto">
-            <div className="grid lg:grid-cols-3">
+        <div className="w-[90%] mx-auto lg:mt-32">
+          <Helmet>
+            <title>Crescendo || All Class</title>
+          </Helmet>
+          <SectionTitle heading='This Semester' subHeading='Available Classes On'></SectionTitle>
+            <div className="grid lg:grid-cols-3 text-center">
                 {
                     classes.map(course => <Card key={course._id} className="w-96">
                     <CardHeader floated={false} className="h-80">
-                      <img src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="profile-picture" />
+                      <img className="w-full h-[100%]" src={course.class_image} />
                     </CardHeader>
-                    <CardBody className="text-center">
+                    <CardBody className="">
                       <Typography variant="h4" color="blue-gray" className="mb-2">
                         {course.class_name}
                       </Typography>
-                      <Typography color="blue" className="font-medium" textGradient>
-                        {course.instructor_name}
+                      <Typography className="font-medium text-dark" textGradient>
+                        <span className="font-bold text-xl">Instructor Name:</span> {course.instructor_name}
                       </Typography>
-                      <Typography color="blue" className="font-medium" textGradient>
-                        {course.available_seats}
+                      <Typography className="font-medium text-dark my-4" textGradient>
+                      <span className="font-bold text-xl">Available Seats:</span> {course.available_seats}
                       </Typography>
-                      <Typography color="blue" className="font-medium" textGradient>
-                        {course.price}
+                      <Typography className="font-medium text-dark" textGradient>
+                      <span className="font-bold text-xl">Price:</span> ${course.price}
                       </Typography>
                     </CardBody>
                     <CardFooter className="flex justify-center gap-7 pt-2">
@@ -89,7 +98,7 @@ const AllClasses = () => {
                           color="blue"
                           textGradient
                         >
-                          <Button onClick={() => handleSelect(course)}>Select</Button>
+                          <Button disabled={isAdmin || isInstructor} onClick={() => handleSelect(course)}>Select</Button>
                         </Typography>
                      
                     </CardFooter>

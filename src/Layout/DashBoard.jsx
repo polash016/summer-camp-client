@@ -9,17 +9,18 @@ import { BsBuildingAdd } from "react-icons/bs";
 import {
   PresentationChartBarIcon,
 } from "@heroicons/react/24/solid";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructorRole from "../hooks/useInstructorRole";
 import { FaHome } from "react-icons/fa";
+import ActiveLink from "../ActiveLink/ActiveLink";
 
 const DashBoard = () => {
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructorRole()
     // const isInstructor = true;
   return (
-    <div className="flex justify-around">
+    <div className="flex justify-around dashboard">
       <Card className="flex-none fixed top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
         <div className="mb-2 p-4">
           <Typography variant="h5" color="blue-gray">
@@ -28,74 +29,74 @@ const DashBoard = () => {
         </div>
         <List>
           {
-            isAdmin ? <><Link  to="/dashboard/manageClasses">
+            isAdmin ? <><NavLink  to="/dashboard/manageClasses">
             <ListItem>
               <ListItemPrefix>
                 <PresentationChartBarIcon className="h-5 w-5" />
               </ListItemPrefix>
               Manage Classes
             </ListItem>
-          </Link>
-          <Link  to="/dashboard/allUsers">
+          </NavLink>
+          <NavLink  to="/dashboard/allUsers">
             <ListItem>
               <ListItemPrefix>
                 <PresentationChartBarIcon className="h-5 w-5" />
               </ListItemPrefix>
               Manage Users
             </ListItem>
-          </Link></>
+          </NavLink></>
            : isInstructor ?
-           <><Link  to="/dashboard/addClass">
+           <><NavLink  to="/dashboard/addClass">
             <ListItem>
               <ListItemPrefix>
               <BsBuildingAdd></BsBuildingAdd>
               </ListItemPrefix>
               Add A Class
             </ListItem>
-          </Link>
-          <Link  to="/dashboard/myClasses">
+          </NavLink>
+          <NavLink  to="/dashboard/myClasses">
             <ListItem>
               <ListItemPrefix>
                 <PresentationChartBarIcon className="h-5 w-5" />
               </ListItemPrefix>
               My Classes
             </ListItem>
-          </Link>
+          </NavLink>
           </> :
-          <><Link  to="/dashboard/bookedClasses">
+          <><NavLink  to="/dashboard/bookedClasses">
           <ListItem>
             <ListItemPrefix>
               <PresentationChartBarIcon className="h-5 w-5" />
             </ListItemPrefix>
             My Selected Classes
           </ListItem>
-        </Link>
-        <Link  to="/dashboard/enrolledClass">
+        </NavLink>
+        <NavLink  to="/dashboard/enrolledClass">
           <ListItem>
             <ListItemPrefix>
               <PresentationChartBarIcon className="h-5 w-5" />
             </ListItemPrefix>
             My Enrolled Classes
           </ListItem>
-        </Link>
-        <Link  to="/dashboard/paymentHistory">
+        </NavLink>
+        <NavLink  to="/dashboard/paymentHistory">
           <ListItem>
             <ListItemPrefix>
               <PresentationChartBarIcon className="h-5 w-5" />
             </ListItemPrefix>
             Payment History
           </ListItem>
-        </Link></>
+        </NavLink></>
           }
           
-          <Link  to="/">
+          <NavLink  to="/">
             <ListItem>
               <ListItemPrefix>
                 <FaHome></FaHome>
               </ListItemPrefix>
               Home
             </ListItem>
-          </Link>
+          </NavLink>
         </List>
       </Card>
 

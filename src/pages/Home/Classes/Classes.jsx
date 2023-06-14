@@ -5,24 +5,31 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import useClasses from "../../../hooks/useClasses";
+import SectionTitle from "../../../SectionTitle/SectionTitle";
 
 const Classes = () => {
   const [classes] = useClasses()
-  console.log(classes)
   return (
     <div className="w-[90%] mx-auto">
-      <h2>Top Classes</h2>
+      <SectionTitle heading='Top Class' subHeading='Our Fabourite'></SectionTitle>
       <div className="grid lg:grid-cols-3 gap-6">
       {
         classes.slice(0,6).map(item =>  <Card key={item._id}
+          
             shadow={false}
             className="relative grid h-[30rem] w-full  items-end justify-center overflow-hidden text-center mb-4"
           >
             <CardHeader
+            style={{
+              backgroundImage: `url(${item.class_image})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
               floated={false}
               shadow={false}
               color="transparent"
-              className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-center"
+              className={`absolute inset-0 m-0 h-full w-full rounded-none `}
             >
               <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
             </CardHeader>

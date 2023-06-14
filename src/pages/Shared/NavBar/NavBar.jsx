@@ -10,6 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import ActiveLink from "../../../ActiveLink/ActiveLink";
 
 
 
@@ -24,42 +25,44 @@ const NavBar = () => {
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal text-white"
+        className="p-1 font-normal text-blue-500"
       >
-        <Link to='/allClasses' className="flex items-center">
+        <ActiveLink to='/' className="flex items-center">
+          Home
+        </ActiveLink>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal text-blue-500"
+      >
+        <ActiveLink to='/allClasses' className="flex items-center">
           All Calsses
-        </Link>
+        </ActiveLink>
       </Typography>
       <Typography
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal text-white"
+        className="p-1 font-normal text-blue-500"
       >
-        <Link to='/dashboard' className="flex items-center"> 
-          DashBoard 
-        </Link>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal text-blue-600"
-      >
-        <Link to='/allInstructor' className="flex items-center">
+        <ActiveLink to='/allInstructor' className="flex items-center">
           All Instructor
-        </Link>
+        </ActiveLink>
       </Typography>
-      <Typography
+      
+     { user && <Typography
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-normal text-white"
+        className="p-1 font-normal text-blue-500"
       >
-        <a href="#" className="flex items-center">
-          Docs
-        </a>
-      </Typography>
+        <ActiveLink to='/dashboard' className="flex items-center"> 
+          DashBoard 
+        </ActiveLink>
+      </Typography>}
+      
     </ul>
   );
 
@@ -79,7 +82,7 @@ const NavBar = () => {
     <div className="max-w-[90%] mx-auto">
       <Navbar
         blurred
-        className="max-w-[90%] mx-auto absolute z-10 top-0 bg-opacity-0 border-none py-2 px-4 lg:px-8 lg:py-4 "
+        className="max-w-[90%] mx-auto fixed z-10 top-0 bg-opacity-0 border-none py-2 px-4 lg:px-8 lg:py-4"
       >
         <div className="mx-auto flex items-center justify-between text-blue-gray-900">
           <Typography
