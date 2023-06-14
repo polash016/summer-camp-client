@@ -15,6 +15,8 @@ import {
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const TABLE_HEAD = [
   "#",
@@ -107,7 +109,11 @@ const ManageClasses = () => {
  
   // console.log(courses);
   return (
-    <div className="w-[90%] ml-8">
+    <div className="w-[90%] ml-12">
+      <Helmet>
+        <title>Manage Classes</title>
+      </Helmet>
+      <SectionTitle heading='Manage Classes'></SectionTitle>
       <Card className="h-full w-full">
         <CardBody className=" px-0">
           <table className="mt-4 w-full min-w-max table-auto text-center">

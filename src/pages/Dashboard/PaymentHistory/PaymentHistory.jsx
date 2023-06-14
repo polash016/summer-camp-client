@@ -7,6 +7,8 @@ import {
   Avatar
 } from "@material-tailwind/react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
+import SectionTitle from "../../../SectionTitle/SectionTitle";
 
 const TABLE_HEAD = ["#","Image", "Course Name", "Email", "Price", "TransactionId"];
 
@@ -19,6 +21,10 @@ const PaymentHistory = () => {
   });
   return (
     <div className="w-[90%] ml-8">
+      <Helmet>
+        <title>Payment History</title>
+      </Helmet>
+      <SectionTitle heading='Payment History'></SectionTitle>
       <Card className="h-full w-full">
         <CardBody className=" px-0">
           <table className="mt-4 w-full min-w-max table-auto text-left">

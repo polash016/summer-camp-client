@@ -8,6 +8,8 @@ import {
   Button,
   Avatar,
 } from "@material-tailwind/react";
+import SectionTitle from "../../../SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const TABLE_HEAD = [
   "#",
@@ -34,7 +36,11 @@ const MyClasses = () => {
   });
   console.log(courses);
   return (
-    <div className="w-[90%] ml-8">
+    <div className="w-[90%] ml-16">
+      <Helmet>
+        <title>My Classes</title>
+      </Helmet>
+      <SectionTitle heading='My Classes'></SectionTitle>
       <Card className="h-full w-full">
         <CardBody className=" px-0">
           <table className="mt-4 w-full min-w-max table-auto text-center">

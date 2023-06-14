@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useClasses from "../../hooks/useClasses";
@@ -21,13 +22,12 @@ const AllClasses = () => {
     const {user} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    const [isAdmin] = useAdmin();
-    const [isInstructor] = useInstructorRole()
-
+    const [isAdmin] = user ? useAdmin() : [false]
+    const [isInstructor] = user ? useInstructorRole() : [false]
     const handleSelect = (course) => {
         
         if(user){
-            const selectedClass = {CourseId: course._id, name: course.class_name, image: course.class_image, price:course.price,email: user.email }
+            const selectedClass = { CourseId: course._id, name: course.class_name, image: course.class_image, price:course.price,email: user.email }
             fetch('http://localhost:5000/selectedClass',{
                 method: 'POST',
                 headers: {
@@ -98,7 +98,7 @@ const AllClasses = () => {
                           color="blue"
                           textGradient
                         >
-                          <Button disabled={isAdmin || isInstructor} onClick={() => handleSelect(course)}>Select</Button>
+                         <Button disabled={isAdmin || isInstructor} onClick={() => handleSelect(course)}>Select</Button>
                         </Typography>
                      
                     </CardFooter>

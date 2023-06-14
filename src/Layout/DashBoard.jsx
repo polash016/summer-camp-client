@@ -5,15 +5,14 @@ import {
   ListItem,
   ListItemPrefix,
 } from "@material-tailwind/react";
-import { BsBuildingAdd } from "react-icons/bs";
+import { BsBuilding, BsBuildingAdd } from "react-icons/bs";
 import {
   PresentationChartBarIcon,
 } from "@heroicons/react/24/solid";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructorRole from "../hooks/useInstructorRole";
-import { FaHome } from "react-icons/fa";
-import ActiveLink from "../ActiveLink/ActiveLink";
+import { FaHome, FaSchool, FaUserAlt } from "react-icons/fa";
 
 const DashBoard = () => {
     const [isAdmin] = useAdmin()
@@ -32,7 +31,7 @@ const DashBoard = () => {
             isAdmin ? <><NavLink  to="/dashboard/manageClasses">
             <ListItem>
               <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
+                <BsBuilding className="h-5 w-5" />
               </ListItemPrefix>
               Manage Classes
             </ListItem>
@@ -40,7 +39,7 @@ const DashBoard = () => {
           <NavLink  to="/dashboard/allUsers">
             <ListItem>
               <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
+                <FaUserAlt className="h-5 w-5" />
               </ListItemPrefix>
               Manage Users
             </ListItem>
@@ -57,7 +56,7 @@ const DashBoard = () => {
           <NavLink  to="/dashboard/myClasses">
             <ListItem>
               <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
+                <FaSchool className="h-5 w-5" />
               </ListItemPrefix>
               My Classes
             </ListItem>

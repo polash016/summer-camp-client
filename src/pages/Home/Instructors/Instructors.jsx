@@ -14,7 +14,7 @@ const Instructors = () => {
         <SectionTitle heading='Top Instructors' ></SectionTitle>
       <div className="grid lg:grid-cols-3">
           {
-              instructors.slice(0, 6).map(instructor => <Card key={instructor._id} className="w-96">
+              instructors.slice(0, 6).map(instructor => <Card key={instructor._id} className="w-96 mb-4">
               <CardHeader floated={false} className="h-80">
                 <img className="w-full h-[100%]" src={instructor.instructor_image} />
               </CardHeader>

@@ -19,17 +19,14 @@ const Banner = () => {
               color="white"
               className="mb-4 text-3xl md:text-4xl lg:text-5xl"
             >
-              The Beauty of Nature
+              Learn Music With Nature
             </Typography>
             <Typography
               variant="lead"
               color="white"
               className="mb-12 opacity-80"
             >
-              It is not so much for its beauty that the forest makes a claim
-              upon men&apos;s hearts, as for that subtle something, that
-              quality of air that emanation from old trees, that so
-              wonderfully changes and renews a weary spirit.
+              Discover the harmonious blend of melodies and the soothing sounds of the environment. Immerse yourself in the rhythm of the earth and unlock your musical potential. Join us on this musical adventure.
             </Typography>
             <div className="flex justify-center gap-2">
               <Button size="lg" color="white">
@@ -55,17 +52,14 @@ const Banner = () => {
               color="white"
               className="mb-4 text-3xl md:text-4xl lg:text-5xl"
             >
-              The Beauty of Nature
+              Learn Music With Nature
             </Typography>
             <Typography
               variant="lead"
               color="white"
               className="mb-12 opacity-80"
             >
-              It is not so much for its beauty that the forest makes a claim
-              upon men&apos;s hearts, as for that subtle something, that
-              quality of air that emanation from old trees, that so
-              wonderfully changes and renews a weary spirit.
+              Discover the harmonious blend of melodies and the soothing sounds of the environment. Immerse yourself in the rhythm of the earth and unlock your musical potential. Join us on this musical adventure.
             </Typography>
             <div className="flex justify-center gap-2">
               <Button size="lg" color="white">
@@ -91,17 +85,14 @@ const Banner = () => {
               color="white"
               className="mb-4 text-3xl md:text-4xl lg:text-5xl"
             >
-              The Beauty of Nature
+              Learn Music With Nature
             </Typography>
             <Typography
               variant="lead"
               color="white"
               className="mb-12 opacity-80"
             >
-              It is not so much for its beauty that the forest makes a claim
-              upon men&apos;s hearts, as for that subtle something, that
-              quality of air that emanation from old trees, that so
-              wonderfully changes and renews a weary spirit.
+             Discover the harmonious blend of melodies and the soothing sounds of the environment. Immerse yourself in the rhythm of the earth and unlock your musical potential. Join us on this musical adventure.
             </Typography>
             <div className="flex gap-2 justify-center">
               <Button size="lg" color="white">

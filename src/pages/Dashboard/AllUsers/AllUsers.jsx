@@ -3,6 +3,8 @@ import { Card, Typography, CardBody, Button } from "@material-tailwind/react";
 // import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
+import SectionTitle from "../../../SectionTitle/SectionTitle";
 
 const TABLE_HEAD = ["#", "Name", "Email", "Instructor", "Admin"];
 
@@ -56,6 +58,10 @@ const AllUsers = () => {
 
   return (
     <div className="w-[90%] ml-8">
+      <Helmet>
+        <title>All Users</title>
+      </Helmet>
+      <SectionTitle heading='All Users'></SectionTitle>
       <Card className="h-full w-full">
         <CardBody className=" px-0">
           <table className="mt-4 w-full min-w-max table-auto text-center">

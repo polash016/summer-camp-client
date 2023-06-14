@@ -1,9 +1,8 @@
-
-import ph1 from "../../assets/images/banner3.jpg";
 import "./AllInstructor.css";
 import useInstuctors from "../../hooks/useInstuctors";
 import { Button } from "@material-tailwind/react";
 import SectionTitle from "../../SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const AllInstructor = () => {
   
@@ -12,6 +11,9 @@ const AllInstructor = () => {
 
   return (
     <div className="w-[90%] mx-auto lg:mt-32">
+        <Helmet>
+            <title>All Instructor</title>
+        </Helmet>
         <SectionTitle heading='All Instructor'></SectionTitle>
       <div className="grid md:grid-cols-3">
       {instructors.map((instructor) => (

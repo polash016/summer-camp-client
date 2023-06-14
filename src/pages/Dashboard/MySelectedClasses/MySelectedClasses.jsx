@@ -11,6 +11,8 @@ import {
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SectionTitle from '../../../SectionTitle/SectionTitle';
+import { Helmet } from 'react-helmet-async';
  
 const TABLE_HEAD = ["#", "Image", "Name","Price", "Delete", "Pay"];
 
@@ -48,6 +50,10 @@ const MySelectedClasses = () => {
     }
     return (
         <div className="w-[90%] ml-8">
+          <Helmet>
+            <title>Selected Class</title>
+          </Helmet>
+          <SectionTitle heading='Selected Classes'></SectionTitle>
              <Card className="h-full w-full">
       
       <CardBody className=" px-0">

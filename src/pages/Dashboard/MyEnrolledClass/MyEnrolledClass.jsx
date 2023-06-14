@@ -7,6 +7,8 @@ import {
     CardBody,
     Avatar
   } from "@material-tailwind/react";
+import SectionTitle from '../../../SectionTitle/SectionTitle';
+import { Helmet } from 'react-helmet-async';
 
 
 const TABLE_HEAD = ["#", "Image", "Course Name", "Email", "Price"];
@@ -19,6 +21,10 @@ const MyEnrolledClass = () => {
   });
     return (
         <div className="w-[90%] ml-8">
+          <Helmet>
+            <title>Enrolled Class</title>
+          </Helmet>
+          <SectionTitle heading='Enrolled Classes'></SectionTitle>
         <Card className="h-full w-full">
           <CardBody className=" px-0">
             <table className="mt-4 w-full min-w-max table-auto text-left">

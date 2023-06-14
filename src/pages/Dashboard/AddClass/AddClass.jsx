@@ -11,6 +11,8 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 
@@ -56,7 +58,11 @@ const AddClass = () => {
     })
   };
   return (
-    <div className="mt-8">
+    <div className="ml-16">
+      <Helmet>
+        <title>Add Class</title>
+      </Helmet>
+      <SectionTitle heading='Add a Class'></SectionTitle>
       <Card className="w-full mx-auto mt-40">
         <CardHeader
           variant="gradient"
