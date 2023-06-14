@@ -46,9 +46,9 @@ const NavBar = () => {
         color="blue-gray"
         className="p-1 font-normal text-blue-600"
       >
-        <a href="#" className="flex items-center">
-          Blocks
-        </a>
+        <Link to='/allInstructor' className="flex items-center">
+          All Instructor
+        </Link>
       </Typography>
       <Typography
         as="li"

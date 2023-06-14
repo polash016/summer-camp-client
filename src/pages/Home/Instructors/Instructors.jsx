@@ -4,7 +4,7 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import useInstuctors from "../../hooks/useInstuctors";
+import useInstuctors from "../../../hooks/useInstuctors";
 
 const Instructors = () => {
     const [instructors] = useInstuctors()

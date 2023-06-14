@@ -16,6 +16,7 @@ import InstructorRoute from "./InstructorRoute";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import MyEnrolledClass from "../pages/Dashboard/MyEnrolledClass/MyEnrolledClass";
+import AllInstructor from "../pages/AllInstructor/AllInstructor";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/allClasses",
         element: <AllClasses></AllClasses>,
+      },
+      {
+        path: '/allInstructor',
+        element: <AllInstructor></AllInstructor>
       },
 
       {
