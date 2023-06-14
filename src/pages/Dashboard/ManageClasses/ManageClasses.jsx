@@ -41,7 +41,6 @@ const ManageClasses = () => {
   const { data: courses = [], refetch } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
-      //    const res = await fetch(`http://localhost:5000/classes/instructor?email=${user?.email}`)
       const res = await axiosSecure.get("/classes/instructorClass");
 
       return res.data;

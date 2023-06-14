@@ -17,13 +17,10 @@ const AllUsers = () => {
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
+    axiosSecure.patch(`/users/admin/${user._id}`)
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount) {
+        if (data.data.modifiedCount) {
           refetch();
           Swal.fire({
             position: "center",
@@ -37,13 +34,9 @@ const AllUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-        method: "PATCH",
-      })
-        .then((res) => res.json())
+    axiosSecure.patch(`/users/instructor/${user._id}`)
         .then((data) => {
-          console.log(data);
-          if (data.modifiedCount) {
+          if (data.data.modifiedCount) {
             refetch();
             Swal.fire({
               position: "center",

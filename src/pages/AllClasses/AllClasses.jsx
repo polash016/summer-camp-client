@@ -28,7 +28,7 @@ const AllClasses = () => {
         
         if(user){
             const selectedClass = { CourseId: course._id, name: course.class_name, image: course.class_image, price:course.price,email: user.email }
-            fetch('http://localhost:5000/selectedClass',{
+            fetch('https://a12-summer-camp-school-server.vercel.app/selectedClass',{
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

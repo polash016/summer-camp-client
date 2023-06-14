@@ -13,11 +13,13 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../../SectionTitle/SectionTitle';
 import { Helmet } from 'react-helmet-async';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
  
 const TABLE_HEAD = ["#", "Image", "Name","Price", "Delete", "Pay"];
 
 const MySelectedClasses = () => {
     const [courses,refetch] = useSelectedClasses();
+    const [axiosSecure] = useAxiosSecure()
     console.log(courses)
     const handleDelete = (id) => {
         Swal.fire({
@@ -30,12 +32,9 @@ const MySelectedClasses = () => {
             confirmButtonText: "Yes, delete it!",
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/selectedClass/${id}`, {
-                method: "DELETE",
-              })
-                .then((res) => res.json())
+             axiosSecure.delete(`/selectedClass/${id}`)
                 .then((data) => {
-                  if(data.deletedCount>0){
+                  if(data.data.deletedCount>0){
                       refetch()
                       Swal.fire(
                           'Deleted!',
