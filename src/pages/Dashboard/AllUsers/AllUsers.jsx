@@ -19,7 +19,6 @@ const AllUsers = () => {
   const handleMakeAdmin = (user) => {
     axiosSecure.patch(`/users/admin/${user._id}`)
       .then((data) => {
-        console.log(data);
         if (data.data.modifiedCount) {
           refetch();
           Swal.fire({
@@ -50,7 +49,7 @@ const AllUsers = () => {
   }
 
   return (
-    <div className="w-[90%] ml-8">
+    <div className="w-[90%] ml-16">
       <Helmet>
         <title>All Users</title>
       </Helmet>
@@ -113,7 +112,7 @@ const AllUsers = () => {
                           "Instructor"
                         ) : (
                           <Button
-                          disabled={user.role === 'admin' ? true : false}
+                          disabled={user.role === 'admin'}
                             onClick={() => handleMakeInstructor(user)}
                             size="sm"
                           >
@@ -128,6 +127,7 @@ const AllUsers = () => {
                           "Admin"
                         ) : (
                           <Button
+                          disabled={user.role === 'instructor'}
                             onClick={() => handleMakeAdmin(user)}
                             size="sm"
                           >

@@ -20,7 +20,6 @@ const TABLE_HEAD = ["#", "Image", "Name","Price", "Delete", "Pay"];
 const MySelectedClasses = () => {
     const [courses,refetch] = useSelectedClasses();
     const [axiosSecure] = useAxiosSecure()
-    console.log(courses)
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -48,7 +47,7 @@ const MySelectedClasses = () => {
           });
     }
     return (
-        <div className="w-[90%] ml-8">
+        <div className="w-[90%] ml-16">
           <Helmet>
             <title>Selected Class</title>
           </Helmet>

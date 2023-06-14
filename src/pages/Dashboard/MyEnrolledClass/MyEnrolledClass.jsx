@@ -20,7 +20,7 @@ const MyEnrolledClass = () => {
     return res.data
   });
     return (
-        <div className="w-[90%] ml-8">
+        <div className="w-[90%] ml-16">
           <Helmet>
             <title>Enrolled Class</title>
           </Helmet>

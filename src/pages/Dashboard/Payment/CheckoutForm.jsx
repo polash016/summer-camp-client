@@ -44,7 +44,6 @@ const CheckoutForm = ({ id }) => {
       setCardError(error.message);
     } else {
       setCardError("");
-      //   console.log("payment method", paymentMethod);
     }
     setProcessing(true);
     const { paymentIntent, error: confirmError } =
@@ -60,7 +59,6 @@ const CheckoutForm = ({ id }) => {
     if (confirmError) {
       setCardError(confirmError);
     }
-    console.log("intrent", paymentIntent);
     setProcessing(false);
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
@@ -76,7 +74,6 @@ const CheckoutForm = ({ id }) => {
         courseName: course?.name,
       };
       axiosSecure.post("/payments", payment).then((res) => {
-        console.log(res.data);
         if (res.data.insertResult.insertedId && res.data.deletedResult.deletedCount && res.data.updatedResult.modifiedCount) {
           alert("post & delete worked");
         }

@@ -33,7 +33,6 @@ const MyClasses = () => {
       return res.data
     },
   });
-  console.log(courses);
   return (
     <div className="w-[90%] ml-16">
       <Helmet>

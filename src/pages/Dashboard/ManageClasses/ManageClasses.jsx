@@ -51,7 +51,6 @@ const ManageClasses = () => {
     
     axiosSecure.patch(`/classes/instructor/${id}`)
           .then(data => {
-            console.log(data.data)
             if(data.data.modifiedCount){
                 refetch()
                 Swal.fire({
@@ -70,7 +69,6 @@ const ManageClasses = () => {
   const handleDeny = (id) => {
     axiosSecure.put(`/classes/instructor/${id}`)
     .then(data => {
-      console.log(data.data)
       if(data.data.modifiedCount){
           refetch()
           Swal.fire({
@@ -85,13 +83,10 @@ const ManageClasses = () => {
   };
 
   const handleFeedback = (e) => {
-    console.log(selectedId)
     e.preventDefault();
     const feedback = e.target.elements.feedback.value
-    console.log(feedback)
     axiosSecure.put(`/feedback/${selectedId}`,{feedback})
     .then(data => {
-      console.log(data.data)
       if(data.data.modifiedCount){
           Swal.fire({
               position: "center",
@@ -106,9 +101,8 @@ const ManageClasses = () => {
   }
 
  
-  // console.log(courses);
   return (
-    <div className="w-[90%] ml-12">
+    <div className="w-[90%] ml-16">
       <Helmet>
         <title>Manage Classes</title>
       </Helmet>

@@ -12,7 +12,6 @@ const SocialLogin = () => {
         googleLogin()
         .then(result => {
             const loggedUser = result.user;
-            console.log(loggedUser)
             const savedUser = {name: loggedUser.displayName, email: loggedUser.email}
             fetch('https://a12-summer-camp-school-server.vercel.app/users', {
                 method: 'POST',
@@ -23,7 +22,6 @@ const SocialLogin = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 navigate(from, { replace: true })
             })
             .catch(err => console.log(err))

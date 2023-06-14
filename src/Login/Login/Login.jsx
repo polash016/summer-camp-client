@@ -30,9 +30,8 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         Swal.fire({
-          title: "Logged In Succesfully",
+          title: `Welcome To Crescendo Camp ${user.displayName}`,
           showClass: {
             popup: "animate__animated animate__fadeInDown",
           },

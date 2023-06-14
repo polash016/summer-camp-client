@@ -27,7 +27,6 @@ const AddClass = () => {
   } = useForm();
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
   const onSubmit = (data) => {
-    console.log(data);
     const formData = new FormData();
     formData.append("image", data.class_image[0]);
     fetch(img_hosting_url, {
@@ -36,7 +35,6 @@ const AddClass = () => {
     })
     .then(res => res.json())
     .then(response => {
-        console.log(response)
         if(response.success){
             const imgUrl = response.data.display_url;
             const {class_name, instructor_name, instructor_email, available_seats, price, enrolled_students} = data;

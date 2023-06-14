@@ -15,10 +15,12 @@ import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructorRole from "../../hooks/useInstructorRole";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const AllClasses = () => {
     const [classes] = useClasses();
+    const [axiosSecure] = useAxiosSecure();
     const {user} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,17 +30,9 @@ const AllClasses = () => {
         
         if(user){
             const selectedClass = { CourseId: course._id, name: course.class_name, image: course.class_image, price:course.price,email: user.email }
-            fetch('https://a12-summer-camp-school-server.vercel.app/selectedClass',{
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(selectedClass)
-            })
-            .then(res => res.json())
+            axiosSecure.post('/selectedClass', selectedClass)
             .then(data => {
-                console.log(data)
-                if(data.insertedId){
+                if(data.data.insertedId){
                     Swal.fire({
                         position: 'center',
                         icon: 'success',

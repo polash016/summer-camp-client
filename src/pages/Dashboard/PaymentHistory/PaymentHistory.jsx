@@ -10,7 +10,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../SectionTitle/SectionTitle";
 
-const TABLE_HEAD = ["#","Image", "Course Name", "Email", "Price", "TransactionId"];
+const TABLE_HEAD = ["#","Image", "Course Name", "Email", "Price", "Date", "TransactionId"];
 
 const PaymentHistory = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -20,7 +20,7 @@ const PaymentHistory = () => {
     return res.data
   });
   return (
-    <div className="w-[90%] ml-8">
+    <div className="w-[90%] ml-16">
       <Helmet>
         <title>Payment History</title>
       </Helmet>
@@ -48,7 +48,7 @@ const PaymentHistory = () => {
             </thead>
             <tbody>
               {payment.map(
-                ({ _id, courseName, email,image, price, transactionId }, index) => {
+                ({ _id, courseName, email,image, price, date, transactionId }, index) => {
                   const isLast = index === payment.length - 1;
                   const classes = isLast
                     ? "p-4"
@@ -92,6 +92,15 @@ const PaymentHistory = () => {
                           className="font-normal"
                         >
                           {price}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {date}
                         </Typography>
                       </td>
                       <td className={classes}>
