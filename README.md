@@ -2,6 +2,10 @@
 # Project Title
 
 *Live Link: https://a12-summer-school.web.app/
+Admin Id: admin@gmail.com
+Admin Password: Admin123@
+Instructor Id: instructor@gmail.com
+Instructor Password: Instructor123@
 
 * In Home page there is nav bar, one slider banner, top classes section sort by enrolled students,6 instructor, a connect us section and a footer
 * In all classes page all the class in database is showed and only user can select class
